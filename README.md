@@ -1,4 +1,4 @@
-WebClient
+HydroGadget WebClient
 =========
 
-WebClient
+No sense in making stuff tightly coupled!
