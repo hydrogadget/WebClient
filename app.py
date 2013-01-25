@@ -11,6 +11,7 @@ PASSWORD = 'default'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
+app.debug = True
 
 def connect_db():
     return sqlite3.connect(app.config['DATABASE'])
@@ -33,6 +34,10 @@ def teardown_request(exception):
 def show_dashboard():
     entries = []
     return render_template('show_dashboard.html', entries=entries)
+
+@app.route('/mobile')
+def show_mobile_remote():
+    return render_template('mobile_remote.html')
 
 if __name__ == '__main__':
     app.run()

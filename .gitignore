@@ -4,7 +4,7 @@
 *.so
 
 # Editors
-.swp
+.*.swp
 
 # Packages
 *.egg
