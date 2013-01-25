@@ -40,5 +40,5 @@ def show_mobile_remote():
     return render_template('mobile_remote.html')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
 
