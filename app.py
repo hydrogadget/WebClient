@@ -1,13 +1,18 @@
 import sqlite3
 
 from flask import Flask, request, session, g, redirect, url_for, \
-     abort, render_template, flash
+     abort, render_template, flash, Response
+
+import requests
+import json
 
 DATABASE = '/tmp/flaskr.db'
 DEBUG = True
 SECRET_KEY = 'development key'
 USERNAME = 'admin'
 PASSWORD = 'default'
+
+TASK_SERVICE_URL = 'http://localhost:5000'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -35,6 +40,25 @@ def show_dashboard():
     entries = []
     return render_template('show_dashboard.html', entries=entries)
 
+# Oh god, super hacky proxy thing, don't judge me - eventually will have nginx
+@app.route('/current/event', methods=['GET'])
+def current_event():
+    r = requests.get(TASK_SERVICE_URL + '/current/event')
+    return Response(json.dumps(r.json()), status=200, mimetype='application/json')
+    
+# Oh god, again with the super hacky proxy thing...
+@app.route('/add/priority', methods=['POST'])
+def add_priority():
+    
+    event = {'valve': int(request.form['valve']),
+             'command': int(request.form['command']),
+             'duration': int(request.form['duration']),
+             'start_time': int(request.form['start_time'])
+             }
+
+    r = requests.post(TASK_SERVICE_URL + "/add/priority", data=event)
+    return Response('hi', status=200, mimetype='application/json')
+    
 @app.route('/mobile')
 def show_mobile_remote():
     return render_template('mobile_remote.html')
