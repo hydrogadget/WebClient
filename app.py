@@ -50,14 +50,14 @@ def current_event():
 @app.route('/add/priority', methods=['POST'])
 def add_priority():
     
-    event = {'valve': int(request.form['valve']),
-             'command': int(request.form['command']),
-             'duration': int(request.form['duration']),
-             'start_time': int(request.form['start_time'])
+    event = {'valve':request.form['valve'],
+             'command':request.form['command'],
+             'duration':request.form['duration'],
+             'start_time':request.form['start_time']
              }
 
     r = requests.post(TASK_SERVICE_URL + "/add/priority", data=event)
-    return Response('hi', status=200, mimetype='application/json')
+    return Response('hi', status=200, mimetype='text/plain')
     
 @app.route('/mobile')
 def show_mobile_remote():

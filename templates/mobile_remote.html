@@ -31,25 +31,25 @@
 				manualEvent = {};
 				
 				var d = new Date();
-				currentTime = String(d.getHours()) + String(d.getMinutes());
+				currentTime = String() + String(d.getMinutes());
 				
 				// Figure out if it is on or off
 			    var isNowOff = $("#flip-1")[0].selectedIndex == 0 ? true:false;
 				var isNowOn = $("#flip-1")[0].selectedIndex == 1 ? true:false;
 				
 				// The valve was on, so shut it off.
-				if (isNowOff)
+				if (isNowOff) {
 					manualEvent = {'valve':1, 'duration':0,'command':0,'start_time':currentTime};
 					
 					$.ajax({
 					  type:    'POST',
 					  url:     '/add/priority',
-					  data:    manual_event,
+					  data:    manualEvent,
 					});
 				}
 
 				// The valve was not on, so figure out what valve 
-				// was on and shut that down first.
+				// *was* on and shut that down first.
 				if (isNowOn) {
 					
 					$.ajax({
@@ -63,23 +63,185 @@
 						$.ajax({
 						  type:    'POST',
 						  url:     '/add/priority',
-						  data:    manual_event,
+						  data:    manualEvent,
 						});
-						
 						
 						manualEvent = {'valve':1, 'duration':2,'command':0,'start_time':currentTime};
 
 						$.ajax({
 						  type:    'POST',
 						  url:     '/add/priority',
-						  data:    manual_event,
+						  data:    manualEvent,
 						});
 						
 					  }
 					});					
-				}
+				} // end if
 			});
-			
+
+			// Push the event for valve 2
+			$("#flip-2").on('slidestop', function( event ) {
+				
+				manualEvent = {};
+				
+				var d = new Date();
+				currentTime = String(d.getHours()) + String(d.getMinutes());
+				
+				// Figure out if it is on or off
+			    var isNowOff = $("#flip-2")[0].selectedIndex == 0 ? true:false;
+				var isNowOn = $("#flip-2")[0].selectedIndex == 1 ? true:false;
+				
+				// The valve was on, so shut it off.
+				if (isNowOff) {
+					manualEvent = {'valve':2, 'duration':0,'command':0,'start_time':currentTime};
+					
+					$.ajax({
+					  type:    'POST',
+					  url:     '/add/priority',
+					  data:    manualEvent,
+					});
+				}
+
+				// The valve was not on, so figure out what valve 
+				// *was* on and shut that down first.
+				if (isNowOn) {
+					
+					$.ajax({
+					  url: '/current/event',
+					  success:function(data){
+						
+						$('#flip-' + data.valve).val('off').slider("refresh");
+						
+						manualEvent = {'valve':data.valve, 'duration':0,'command':0,'start_time':currentTime};
+
+						$.ajax({
+						  type:    'POST',
+						  url:     '/add/priority',
+						  data:    manualEvent,
+						});
+						
+						
+						manualEvent = {'valve':2, 'duration':2,'command':0,'start_time':currentTime};
+
+						$.ajax({
+						  type:    'POST',
+						  url:     '/add/priority',
+						  data:    manualEvent,
+						});
+						
+					  }
+					});					
+				} // end if
+			});
+
+			// Push the event for valve 3
+			$("#flip-3").on('slidestop', function( event ) {
+				
+				manualEvent = {};
+				
+				var d = new Date();
+				currentTime = String(d.getHours()) + String(d.getMinutes());
+				
+				// Figure out if it is on or off
+			    var isNowOff = $("#flip-3")[0].selectedIndex == 0 ? true:false;
+				var isNowOn = $("#flip-3")[0].selectedIndex == 1 ? true:false;
+				
+				// The valve was on, so shut it off.
+				if (isNowOff) {
+					manualEvent = {'valve':3, 'duration':0,'command':0,'start_time':currentTime};
+					
+					$.ajax({
+					  type:    'POST',
+					  url:     '/add/priority',
+					  data:    manualEvent,
+					});
+				}
+
+				// The valve was not on, so figure out what valve 
+				// *was* on and shut that down first.
+				if (isNowOn) {
+					
+					$.ajax({
+					  url: '/current/event',
+					  success:function(data){
+						
+						$('#flip-' + data.valve).val('off').slider("refresh");
+						
+						manualEvent = {'valve':data.valve, 'duration':0,'command':0,'start_time':currentTime};
+
+						$.ajax({
+						  type:    'POST',
+						  url:     '/add/priority',
+						  data:    manualEvent,
+						});
+						
+						manualEvent = {'valve':3, 'duration':2,'command':0,'start_time':currentTime};
+
+						$.ajax({
+						  type:    'POST',
+						  url:     '/add/priority',
+						  data:    manualEvent,
+						});
+						
+					  }
+					});					
+				} // end if
+			});
+
+			// Push the event for valve 4
+			$("#flip-4").on('slidestop', function( event ) {
+				
+				manualEvent = {};
+				
+				var d = new Date();
+				currentTime = String(d.getHours()) + String(d.getMinutes());
+				
+				// Figure out if it is on or off
+			    var isNowOff = $("#flip-4")[0].selectedIndex == 0 ? true:false;
+				var isNowOn = $("#flip-4")[0].selectedIndex == 1 ? true:false;
+				
+				// The valve was on, so shut it off.
+				if (isNowOff) {
+					manualEvent = {'valve':4, 'duration':0,'command':0,'start_time':currentTime};
+					
+					$.ajax({
+					  type:    'POST',
+					  url:     '/add/priority',
+					  data:    manualEvent,
+					});
+				}
+
+				// The valve was not on, so figure out what valve 
+				// *was* on and shut that down first.
+				if (isNowOn) {
+					
+					$.ajax({
+					  url: '/current/event',
+					  success:function(data){
+						
+						$('#flip-' + data.valve).val('off').slider("refresh");
+						
+						manualEvent = {'valve':data.valve, 'duration':0,'command':0,'start_time':currentTime};
+
+						$.ajax({
+						  type:    'POST',
+						  url:     '/add/priority',
+						  data:    manualEvent,
+						});
+						
+						
+						manualEvent = {'valve':4, 'duration':2,'command':0,'start_time':currentTime};
+
+						$.ajax({
+						  type:    'POST',
+						  url:     '/add/priority',
+						  data:    manualEvent,
+						});
+						
+					  }
+					});					
+				} // end if
+			});			
 		});
 
     </script>
