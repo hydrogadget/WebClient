@@ -1,8 +1,8 @@
 body {font-family: 'Open Sans', sans-serif; font-weight: 400; letter-spacing: 0.1em;}
 .navbar .navbar-inner {
 	min-height:40px;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: 40px;
+	padding-right: 40px;
 	background-color: #41A7FF;
 	background-image: -moz-linear-gradient(top, #66EDFF, #41A7FF);
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#66EDFF), to(#41A7FF));
@@ -23,17 +23,21 @@ body {font-family: 'Open Sans', sans-serif; font-weight: 400; letter-spacing: 0.
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
 	*zoom:1;
 }
+
 h2 {font-size: 14px; font-weight: 600; color: #CCC; text-shadow:0 1px 4px #333; letter-spacing: 0.1em; line-height: 1.5em; margin-top: 0px;}
 .navbar .nav > li > a {background: transparent; border: none; box-shadow: none; color: #333; text-shadow: none; font-weight: normal;}
 .navbar .nav > li.active > a {background: transparent; border: none; box-shadow: none; color: #333; text-shadow: none; font-weight: normal;}
 .navbar .nav > li > a:focus, .navbar .nav > li > a:hover {background: transparent; border: none; box-shadow: none; color: #000; text-shadow: none; font-weight: normal; text-decoration:none;}
 .navbar .nav > li.active > a:focus, .navbar .nav > li.active > a:hover {background: transparent; border: none; box-shadow: none; color: #000; text-shadow: none; font-weight: normal; text-decoration:none;}
 
+body {background: #48484A url(../img/background-main.png) repeat left top;}
+.row, .row-fluid {border-bottom: 1px solid #323234; border-top: 1px solid #4B4B4C;}
+.forecast-row {padding: 0px 30px; background: #3E3E3F url(../img/background-forecast.png) repeat left top;}
 .navbar a.brand {background: transparent; border: none; box-shadow: none; color: #333; text-shadow: none;}
-.container, .container-fluid {padding: 40px 0; margin: 0; background: #48484A url(../img/background-main.png) repeat left top;}
-.forecast {padding: 10px; height: 150px; border-bottom: 1px solid #323234; background: #3E3E3F url(../img/forecast-stub.png) no-repeat left top;}
-.schedule {padding: 10px; height: 400px; border-top: 1px solid #4B4B4C; border-right: 1px solid #323234; border-bottom: 1px solid #323234; background: url(../img/schedule-stub.png) no-repeat center center;}
-.usage {padding: 10px; height: 400px; border-left: 1px solid #4B4B4C; border-bottom: 1px solid #323234;}
+.container, .container-fluid {padding: 40px 0; margin: 0px; background: #48484A url(../img/background-main.png) repeat left top;}
+.forecast {padding: 10px; margin: 0px; height: 150px; background: url(../img/forecast-stub.png) no-repeat left top;}
+.schedule {padding: 10px 40px; margin: 0px; height: 400px; border-right: 1px solid #323234; background: url(../img/schedule-stub.png) no-repeat center center;}
+.usage {padding: 10px; margin: 0px; height: 400px;}
 
 table.water-usage {border: none; padding: none; margin: 20px 10px;}
 table.water-usage tr {text-align: left;}
