@@ -40,6 +40,12 @@ def show_dashboard():
     entries = []
     return render_template('show_dashboard.html', entries=entries)
 
+# Okay, I don't really understand Python syntax, and routes seem overly tricky, so this probably won't work. If someone knows how to fix it, please do
+@app.route('/scheduler')
+def show_scheduler():
+		 entries = []
+		 return render_template('show_scheduler.html', entries=entries)
+
 # Oh god, super hacky proxy thing, don't judge me - eventually will have nginx
 @app.route('/current/event', methods=['GET'])
 def current_event():
