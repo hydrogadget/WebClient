@@ -10,6 +10,13 @@
 
     <script type="text/javascript">
 
+        function currentTime(){
+            var d = new Date();
+            var hours = d.getHours();
+            hours = String(hours).length == 1 ? "0" + hours:hours; 
+            return hours + String(d.getMinutes());
+        }
+
 	$(document).ready (
 		
 		function() {
@@ -29,17 +36,14 @@
 			$("#flip-1").on('slidestop', function( event ) {
 				
 				manualEvent = {};
-				
-				var d = new Date();
-				currentTime = String() + String(d.getMinutes());
-				
+								
 				// Figure out if it is on or off
-			    var isNowOff = $("#flip-1")[0].selectedIndex == 0 ? true:false;
+                var isNowOff = $("#flip-1")[0].selectedIndex == 0 ? true:false;
 				var isNowOn = $("#flip-1")[0].selectedIndex == 1 ? true:false;
 				
 				// The valve was on, so shut it off.
 				if (isNowOff) {
-					manualEvent = {'valve':1, 'duration':0,'command':0,'start_time':currentTime};
+					manualEvent = {'valve':1, 'duration':0,'command':0,'start_time':currentTime()};
 					
 					$.ajax({
 					  type:    'POST',
@@ -58,7 +62,7 @@
 						
 						$('#flip-' + data.valve).val('off').slider("refresh");
 						
-						manualEvent = {'valve':data.valve, 'duration':0,'command':0,'start_time':currentTime};
+						manualEvent = {'valve':data.valve, 'duration':0,'command':0,'start_time':currentTime()};
 
 						$.ajax({
 						  type:    'POST',
@@ -66,7 +70,7 @@
 						  data:    manualEvent,
 						});
 						
-						manualEvent = {'valve':1, 'duration':2,'command':0,'start_time':currentTime};
+						manualEvent = {'valve':1, 'duration':2,'command':0,'start_time':currentTime()};
 
 						$.ajax({
 						  type:    'POST',
@@ -84,16 +88,13 @@
 				
 				manualEvent = {};
 				
-				var d = new Date();
-				currentTime = String(d.getHours()) + String(d.getMinutes());
-				
 				// Figure out if it is on or off
 			    var isNowOff = $("#flip-2")[0].selectedIndex == 0 ? true:false;
 				var isNowOn = $("#flip-2")[0].selectedIndex == 1 ? true:false;
 				
 				// The valve was on, so shut it off.
 				if (isNowOff) {
-					manualEvent = {'valve':2, 'duration':0,'command':0,'start_time':currentTime};
+					manualEvent = {'valve':2, 'duration':0,'command':0,'start_time':currentTime()};
 					
 					$.ajax({
 					  type:    'POST',
@@ -112,7 +113,7 @@
 						
 						$('#flip-' + data.valve).val('off').slider("refresh");
 						
-						manualEvent = {'valve':data.valve, 'duration':0,'command':0,'start_time':currentTime};
+						manualEvent = {'valve':data.valve,'duration':0,'command':0,'start_time':currentTime()};
 
 						$.ajax({
 						  type:    'POST',
@@ -121,7 +122,7 @@
 						});
 						
 						
-						manualEvent = {'valve':2, 'duration':2,'command':0,'start_time':currentTime};
+						manualEvent = {'valve':2, 'duration':2,'command':0,'start_time':currentTime()};
 
 						$.ajax({
 						  type:    'POST',
@@ -139,16 +140,13 @@
 				
 				manualEvent = {};
 				
-				var d = new Date();
-				currentTime = String(d.getHours()) + String(d.getMinutes());
-				
 				// Figure out if it is on or off
 			    var isNowOff = $("#flip-3")[0].selectedIndex == 0 ? true:false;
 				var isNowOn = $("#flip-3")[0].selectedIndex == 1 ? true:false;
 				
 				// The valve was on, so shut it off.
 				if (isNowOff) {
-					manualEvent = {'valve':3, 'duration':0,'command':0,'start_time':currentTime};
+					manualEvent = {'valve':3, 'duration':0,'command':0,'start_time':currentTime()};
 					
 					$.ajax({
 					  type:    'POST',
@@ -167,7 +165,7 @@
 						
 						$('#flip-' + data.valve).val('off').slider("refresh");
 						
-						manualEvent = {'valve':data.valve, 'duration':0,'command':0,'start_time':currentTime};
+						manualEvent = {'valve':data.valve,'duration':0,'command':0,'start_time':currentTime()};
 
 						$.ajax({
 						  type:    'POST',
@@ -175,7 +173,7 @@
 						  data:    manualEvent,
 						});
 						
-						manualEvent = {'valve':3, 'duration':2,'command':0,'start_time':currentTime};
+						manualEvent = {'valve':3, 'duration':2,'command':0,'start_time':currentTime()};
 
 						$.ajax({
 						  type:    'POST',
@@ -193,16 +191,13 @@
 				
 				manualEvent = {};
 				
-				var d = new Date();
-				currentTime = String(d.getHours()) + String(d.getMinutes());
-				
 				// Figure out if it is on or off
 			    var isNowOff = $("#flip-4")[0].selectedIndex == 0 ? true:false;
 				var isNowOn = $("#flip-4")[0].selectedIndex == 1 ? true:false;
 				
 				// The valve was on, so shut it off.
 				if (isNowOff) {
-					manualEvent = {'valve':4, 'duration':0,'command':0,'start_time':currentTime};
+					manualEvent = {'valve':4, 'duration':0,'command':0,'start_time':currentTime()};
 					
 					$.ajax({
 					  type:    'POST',
@@ -221,7 +216,7 @@
 						
 						$('#flip-' + data.valve).val('off').slider("refresh");
 						
-						manualEvent = {'valve':data.valve, 'duration':0,'command':0,'start_time':currentTime};
+						manualEvent = {'valve':data.valve, 'duration':0,'command':0,'start_time':currentTime()};
 
 						$.ajax({
 						  type:    'POST',
@@ -230,7 +225,7 @@
 						});
 						
 						
-						manualEvent = {'valve':4, 'duration':2,'command':0,'start_time':currentTime};
+						manualEvent = {'valve':4, 'duration':2,'command':0,'start_time':currentTime()};
 
 						$.ajax({
 						  type:    'POST',
